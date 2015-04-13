@@ -1,4 +1,14 @@
-
+def any?(items, &block)
+  result = false
+  if items == []
+    return result
+  else
+    items.each do |item|
+      result = true if block.call(item) || result
+    end
+    return result
+  end
+end
 
 # ------ code above this line ------
 
