@@ -1,12 +1,24 @@
+# def max_by(items, &block)
+#   if items == []
+#     return nil
+#   else
+#     result = {"#{block.call(items[0])}": items[0]}
+#     items.each do |item|
+#       result = {"#{block.call(item)}": item} if block.call(item) > result.map{|k,v| k.to_s.to_i}[0]
+#     end
+#     return result.map{|k,v| v}[0]
+#   end
+# end
+
 def max_by(items, &block)
   if items == []
     return nil
   else
-    result = {"#{block.call(items[0])}": items[0]}
+    result = items[0]
     items.each do |item|
-      result = {"#{block.call(item)}": item} if block.call(item) > result.map{|k,v| k.to_s.to_i}[0]
+      result = item if block.call(item) > block.call(result)
     end
-    return result.map{|k,v| v}[0]
+    return result
   end
 end
 
