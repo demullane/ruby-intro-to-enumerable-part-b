@@ -1,4 +1,18 @@
 def min_by(items, &block)
+  if items == []
+    return nil
+  else
+    result = items[0]
+    result_b = block.call(result)
+    items.each do |item|
+      result_c = block.call(item)
+      if result_c < result_b
+        result = item
+        result_b = result_c
+      end
+    end
+    return result
+  end
 end
 
 # ------ code above this line ------
