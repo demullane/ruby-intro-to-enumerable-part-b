@@ -1,4 +1,13 @@
 def max_by(items, &block)
+  if items == []
+    return nil
+  else
+    result = {"#{block.call(items[0])}": items[0]}
+    items.each do |item|
+      result = {"#{block.call(item)}": item} if block.call(item) > result.map{|k,v| k.to_s.to_i}[0]
+    end
+    return result.map{|k,v| v}[0]
+  end
 end
 
 # ------ code above this line ------
