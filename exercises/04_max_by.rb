@@ -15,8 +15,13 @@ def max_by(items, &block)
     return nil
   else
     result = items[0]
+    result_b = block.call(result)
     items.each do |item|
-      result = item if block.call(item) > block.call(result)
+      result_c = block.call(item)
+      if result_c > result_b
+        result = item
+        result_b = result_c
+      end
     end
     return result
   end
